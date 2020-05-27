@@ -1,0 +1,29 @@
+<header>
+  <nav class ="navbar navbar-expand-md navbar-dark bg-primary">
+    <a class="navbar-brand" routerLink="/"><img src="assets/papeleria.png" alt="papeleria" width="50" height="50"></a>
+  <ul class="navbar-nav mr-auto">
+  	<li class="nav-item dropdown">
+      <!--*ngIf="loginService.isUserLoggedIn()"-->
+  		<a *ngIf="loginService.isUserLoggedIn()" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
+  		<div class="dropdown-menu" aria-labelledby="dropdown01">
+  			<a class="dropdown-item" routerLink="/admin/productos">Lista de productos</a>
+  			<a class="dropdown-item" routerLink="/admin/add-producto">Agregar producto</a>
+  		</div>
+  	</li>
+    <li>
+      <!--*ngIf="!loginService.isUserLoggedIn()"-->
+      <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/productos" class="nav-link">Productos</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav ml-auto">
+	  <li>
+      <!--*ngIf="!loginService.isUserLoggedIn()"-->
+      <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Iniciar sesión</a>
+    </li>
+	  <li>
+      <!--*ngIf="loginService.isUserLoggedIn()"-->
+      <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Cerrar sesión</a>
+    </li>
+  </ul>
+  </nav>
+</header>

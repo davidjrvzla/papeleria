@@ -1,0 +1,61 @@
+<div class="list row">
+  <div class="col-md-8">
+    <br>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Buscar por nombre"
+        [(ngModel)]="nombre"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchNombre()"
+        >
+          Buscar
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Lista de productos:</h4>
+    <div id="overflow">
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let producto of productos; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveProducto(producto, i)"
+        >
+          {{ producto.nombre }}
+        </li>
+      </ul>
+    </div>
+
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllProductos()">
+      Borrar todos
+    </button>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentProducto">
+      <h4>Producto</h4>
+      <div>
+        <label><strong>Nombre:</strong></label> {{ currentProducto.nombre }}
+      </div>
+      <div>
+        <label><strong>Precio:</strong></label>
+        {{ currentProducto.precio }}
+      </div>
+      <div>
+        <label><strong>Estado:</strong></label>
+        {{ currentProducto.published ? "Agotado" : "Disponible" }}
+      </div>
+
+      <a class="badge badge-warning" routerLink="/admin/producto/{{ currentProducto.id }}">
+        Editar
+      </a>
+    </div>
+  </div>
+</div>
